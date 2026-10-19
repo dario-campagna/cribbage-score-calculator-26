@@ -14,6 +14,11 @@ public class ParseCard {
     }
 
     @Test
+    void withSuiteDiamonds() {
+        assertEquals(Suite.DIAMONDS, Card.parse("0♦").suite());
+    }
+
+    @Test
     void withRankFive() {
         assertEquals('5', Card.parse("5♥").rank());
     }
