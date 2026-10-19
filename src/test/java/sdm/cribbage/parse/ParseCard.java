@@ -19,6 +19,16 @@ public class ParseCard {
     }
 
     @Test
+    void withSuiteClubs() {
+        assertEquals(Suite.CLUBS, Card.parse("7♣").suite());
+    }
+
+    @Test
+    void withSuiteSpades() {
+        assertEquals(Suite.SPADES, Card.parse("Q♠").suite());
+    }
+
+    @Test
     void withRankFive() {
         assertEquals('5', Card.parse("5♥").rank());
     }

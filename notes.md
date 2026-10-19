@@ -14,7 +14,7 @@ Tests
 - ~~"5♥" -> Card with suite hearts~~
 - ~~"5♥" -> Card with rank 5~~
 - "0♦" -> Card with rank 10
-- "0♦" -> Card with suite diamonds
+~~- "0♦" -> Card with suite diamonds~~
 - "A♠" -> Card with rank Ace and suite spades
 - "5♥5♦5♠J♣5♣" -> 29
 - "0♦J♥Q♠A♣9♦" -> 4
