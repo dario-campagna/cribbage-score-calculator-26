@@ -1,15 +1,18 @@
 package sdm.cribbage;
 
 public class Card {
+    private final char rank;
     private final Suite suite;
 
-    public Card(Suite suite) {
+    public Card(char rankAsChar, Suite suite) {
+        this.rank = rankAsChar;
         this.suite = suite;
     }
 
     public static Card parse(String cardAsString) {
+        char rankAsChar = cardAsString.charAt(0);
         char suiteAsChar = cardAsString.charAt(1);
-        return new Card(Suite.valueOf(suiteAsChar));
+        return new Card(rankAsChar, Suite.valueOf(suiteAsChar));
     }
 
     public Suite suite() {
@@ -17,6 +20,6 @@ public class Card {
     }
 
     public char rank() {
-        return '5';
+        return rank;
     }
 }

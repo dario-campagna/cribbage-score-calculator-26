@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import sdm.cribbage.Card;
 import sdm.cribbage.Suite;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ParseCard {
@@ -31,5 +32,18 @@ public class ParseCard {
     @Test
     void withRankFive() {
         assertEquals('5', Card.parse("5♥").rank());
+    }
+    
+    @Test
+    void withRankTen() {
+        assertEquals('0', Card.parse("0♦").rank());
+    }
+
+    @Test
+    void withRankAceAndSuiteSpades() {
+        assertAll(
+                () -> assertEquals('A', Card.parse("A♠").rank()),
+                () -> assertEquals(Suite.SPADES, Card.parse("A♠").suite())
+        );
     }
 }
