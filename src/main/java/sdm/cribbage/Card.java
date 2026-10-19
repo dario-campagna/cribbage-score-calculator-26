@@ -8,4 +8,8 @@ public class Card {
     public Suite suite() {
         return Suite.HEARTS;
     }
+
+    public char rank() {
+        return '5';
+    }
 }

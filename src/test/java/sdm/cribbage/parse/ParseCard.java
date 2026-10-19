@@ -12,4 +12,9 @@ public class ParseCard {
     void withSuiteHearts() {
         assertEquals(Suite.HEARTS, Card.parse("5♥").suite());
     }
+
+    @Test
+    void withRankFive() {
+        assertEquals('5', Card.parse("5♥").rank());
+    }
 }
