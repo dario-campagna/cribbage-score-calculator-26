@@ -22,4 +22,18 @@ public class Card {
     public char rank() {
         return rank;
     }
+
+    @Override
+    public final boolean equals(Object o) {
+        if (!(o instanceof Card card)) return false;
+
+        return rank == card.rank && suite == card.suite;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = rank;
+        result = 31 * result + suite.hashCode();
+        return result;
+    }
 }
