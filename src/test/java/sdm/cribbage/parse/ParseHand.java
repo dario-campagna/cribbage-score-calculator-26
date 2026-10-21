@@ -35,4 +35,17 @@ public class ParseHand {
         );
         assertEquals(expectedHandCards, parsedHand.handCards());
     }
+
+    @Test
+    void withAllDifferentCards() {
+        List<Card> expectedHandCards = Arrays.asList(
+                new Card('A', Suite.HEARTS),
+                new Card('2', Suite.DIAMONDS),
+                new Card('3', Suite.SPADES),
+                new Card('4', Suite.CLUBS)
+        );
+        Hand expetedHand = new Hand(expectedHandCards, new Card('5', Suite.SPADES));
+        Hand parsedHand = Hand.parse("A♥2♦3♠4♣5♠");
+        assertEquals(expetedHand, parsedHand);
+    }
 }
