@@ -17,4 +17,13 @@ public class ParseHand {
                 () -> assertEquals(Suite.CLUBS, parsedHand.starterCard().suite())
         );
     }
+
+    @Test
+    void withStarterCardSevenOfSpades() {
+        Hand parsedHand = Hand.parse("5♥5♦5♠J♣7♠");
+        assertAll(
+                () -> assertEquals('7', parsedHand.starterCard().rank()),
+                () -> assertEquals(Suite.SPADES, parsedHand.starterCard().suite())
+        );
+    }
 }

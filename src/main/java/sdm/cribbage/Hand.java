@@ -8,7 +8,8 @@ public class Hand {
     }
 
     public static Hand parse(String handAsString) {
-        return new Hand(new Card('5', Suite.CLUBS));
+        String starterCardAsString = handAsString.substring(handAsString.length() - 2);
+        return new Hand(Card.parse(starterCardAsString));
     }
 
     public Card starterCard() {
