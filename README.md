@@ -2,7 +2,7 @@ Write a Java program that computes the score of a [Cribbage](https://en.wikipedi
 
 ## Cribbage hand
 
-We represent a card with two characters. The first character is the rank, the second character is the suite.
+We represent a card with two characters. The first character is the rank, the second character is the suit.
 
 |Rank|Character|
 |----|---------|
@@ -20,7 +20,7 @@ We represent a card with two characters. The first character is the rank, the se
 |Queen|Q|
 |King|K|
 
-|Suite|Character|
+|Suit|Character|
 |-----|--------|
 |Clubs|♣|
 |Diamonds|♦|

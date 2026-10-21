@@ -4,7 +4,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import sdm.cribbage.Card;
-import sdm.cribbage.Suite;
+import sdm.cribbage.Suit;
 
 import java.util.stream.Stream;
 
@@ -14,11 +14,11 @@ public class ParseCard {
 
     public static Stream<Arguments> cardAndStringProvider() {
         return Stream.of(
-                Arguments.arguments(new Card('5', Suite.HEARTS), "5♥"),
-                Arguments.arguments(new Card('0', Suite.DIAMONDS), "0♦"),
-                Arguments.arguments(new Card('7', Suite.CLUBS), "7♣"),
-                Arguments.arguments(new Card('Q', Suite.SPADES), "Q♠"),
-                Arguments.arguments(new Card('A', Suite.SPADES), "A♠")
+                Arguments.arguments(new Card('5', Suit.HEARTS), "5♥"),
+                Arguments.arguments(new Card('0', Suit.DIAMONDS), "0♦"),
+                Arguments.arguments(new Card('7', Suit.CLUBS), "7♣"),
+                Arguments.arguments(new Card('Q', Suit.SPADES), "Q♠"),
+                Arguments.arguments(new Card('A', Suit.SPADES), "A♠")
         );
     }
 

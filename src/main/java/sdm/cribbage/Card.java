@@ -2,21 +2,21 @@ package sdm.cribbage;
 
 public class Card {
     private final char rank;
-    private final Suite suite;
+    private final Suit suit;
 
-    public Card(char rankAsChar, Suite suite) {
+    public Card(char rankAsChar, Suit suit) {
         this.rank = rankAsChar;
-        this.suite = suite;
+        this.suit = suit;
     }
 
     public static Card parse(String cardAsString) {
         char rankAsChar = cardAsString.charAt(0);
-        char suiteAsChar = cardAsString.charAt(1);
-        return new Card(rankAsChar, Suite.valueOf(suiteAsChar));
+        char suitAsChar = cardAsString.charAt(1);
+        return new Card(rankAsChar, Suit.valueOf(suitAsChar));
     }
 
-    public Suite suite() {
-        return suite;
+    public Suit suit() {
+        return suit;
     }
 
     public char rank() {
@@ -27,13 +27,13 @@ public class Card {
     public final boolean equals(Object o) {
         if (!(o instanceof Card card)) return false;
 
-        return rank == card.rank && suite == card.suite;
+        return rank == card.rank && suit == card.suit;
     }
 
     @Override
     public int hashCode() {
         int result = rank;
-        result = 31 * result + suite.hashCode();
+        result = 31 * result + suit.hashCode();
         return result;
     }
 }
