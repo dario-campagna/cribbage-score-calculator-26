@@ -32,6 +32,24 @@ public class Hand {
         return handCards;
     }
 
+    public int scorePairs() {
+        // Retrieve all cards
+        List<Card> l = new ArrayList<>(handCards);
+        l.add(starterCard);
+        // Count distinct pairs
+        int p = 0;
+        for (int i = 0; i < l.size(); i++)
+        {
+            for (int j = i + 1; j < l.size(); j++) {
+                Card c1 = l.get(i);
+                Card c2 = l.get(j);
+                if (c1.rank() == c2.rank())
+                    p++;
+            }
+        }
+        return p*2;
+    }
+
     public Card starterCard() {
         return starterCard;
     }

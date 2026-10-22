@@ -24,7 +24,7 @@ Tests
 - Pairs
   - "5♥5♦A♠2♣6♣" -> 2
   - "A♥A♦A♠2♣6♣" -> 6
-  - "6♥Q♦Q♠Q♣Q♠" -> 12
+  - "6♥Q♦Q♠Q♣Q♥" -> 12
 - Fifteen Twos
   - "5♥Q♦A♠7♣6♠" -> 2 points
 - Runs
