@@ -10,11 +10,27 @@ Behaviors
 
 Tests
 
-- ~~"5♥5♦5♠J♣5♣" -> Cribbage Hand with Hand Cards five of hearts, five of diamonds,... and a starter card 5 of clubs~~
-- ~~"5♥" -> Card with suit hearts~~
-- ~~"5♥" -> Card with rank 5~~
-- ~~"0♦" -> Card with rank 10~~
-- ~~"0♦" -> Card with suit diamonds~~
-- ~~"A♠" -> Card with rank Ace and suit spades~~
-- "5♥5♦5♠J♣5♣" -> 29
-- "0♦J♥Q♠A♣9♦" -> 4
+- Parsing
+  - ~~"5♥5♦5♠J♣5♣" -> Cribbage Hand with Hand Cards five of hearts, five of diamonds,... and a starter card 5 of clubs~~
+  - ~~"5♥" -> Card with suit hearts~~
+  - ~~"5♥" -> Card with rank 5~~
+  - ~~"0♦" -> Card with rank 10~~
+  - ~~"0♦" -> Card with suit diamonds~~
+  - ~~"A♠" -> Card with rank Ace and suit spades~~
+- Flush
+  - "3♣7♣A♣K♣J♦" -> 4 points
+  - "3♣7♣A♣K♣J♣" -> 5 points
+  - "J♣7♥A♣K♦3♣" -> 1 points (one for his nob)
+- Pairs
+  - "5♥5♦A♠2♣6♣" -> 2
+  - "A♥A♦A♠2♣6♣" -> 6
+  - "6♥Q♦Q♠Q♣Q♠" -> 12
+- Fifteen Twos
+  - "5♥Q♦A♠7♣6♠" -> 2 points
+- Runs
+  - "2♦4♥3♠7♣J♦" -> 2 (run of three)
+  - "0♦J♥Q♠A♣9♦" -> 4 (run of four)
+- Multiple rules apply
+  - "3♣7♣A♣K♣K♦" -> 6 points
+  - "5♥Q♦Q♠7♣6♠" -> 6 points
+  - "5♥5♦5♠J♣5♣" -> 29
