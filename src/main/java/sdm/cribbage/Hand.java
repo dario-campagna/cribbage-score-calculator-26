@@ -55,6 +55,38 @@ public class Hand {
         return numberOfDistinctPairs;
     }
 
+    public int scoreFifteenTwos() {
+        int numberOfFifteens = countCombinationsSummingToFifteen(allCards());
+        return numberOfFifteens*2;
+    }
+
+    private int countCombinationsSummingToFifteen(List<Card> cards) {
+        int numberOfFifteens = 0;
+        int numberOfCombinations = 1 << cards.size();
+        for (int combination = 1; combination < numberOfCombinations; combination++) {
+            if (sumOfValues(cards, combination) == 15)
+                numberOfFifteens++;
+        }
+        return numberOfFifteens;
+    }
+
+    private int sumOfValues(List<Card> cards, int combination) {
+        int sum = 0;
+        for (int i = 0; i < cards.size(); i++) {
+            if ((combination & (1 << i)) != 0)
+                sum += valueOf(cards.get(i).rank());
+        }
+        return sum;
+    }
+
+    private int valueOf(char rank) {
+        return switch (rank) {
+            case 'A' -> 1;
+            case '0', 'J', 'Q', 'K' -> 10;
+            default -> rank - '0';
+        };
+    }
+
     public Card starterCard() {
         return starterCard;
     }

@@ -27,6 +27,11 @@ Tests
   - "6♥Q♦Q♠Q♣Q♥" -> 12
 - Fifteen Twos
   - "5♥Q♦A♠7♣6♠" -> 2 points
+  - "A♥A♦2♠2♣3♣" -> 0 points (no combination sums to 15)
+  - "5♥0♦J♠2♣A♣" -> 4 points (5+10, 5+J)
+  - "K♥Q♦J♠0♣5♣" -> 8 points (each face card or ten with the 5)
+  - "A♥2♦3♠4♣5♣" -> 2 points (all five cards sum to 15)
+  - "5♥5♦5♠J♣5♣" -> 16 points (four 5+J and four 5+5+5)
 - Runs
   - "2♦4♥3♠7♣J♦" -> 2 (run of three)
   - "0♦J♥Q♠A♣9♦" -> 4 (run of four)
