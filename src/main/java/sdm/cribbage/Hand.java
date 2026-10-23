@@ -1,5 +1,7 @@
 package sdm.cribbage;
 
+import org.paukov.combinatorics3.Generator;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,35 +58,16 @@ public class Hand {
     }
 
     public int scoreFifteenTwos() {
-        int numberOfFifteens = 0;
-        for (List<Card> combination : allCombinationsOf(allCards())) {
-            if (sumOfValues(combination) == 15)
-                numberOfFifteens++;
-        }
-        return numberOfFifteens*2;
-    }
-
-    private List<List<Card>> allCombinationsOf(List<Card> cards) {
-        List<List<Card>> combinations = new ArrayList<>();
-        combinations.add(new ArrayList<>());
-        for (Card card : cards) {
-            List<List<Card>> combinationsWithCard = new ArrayList<>();
-            for (List<Card> combination : combinations) {
-                List<Card> combinationWithCard = new ArrayList<>(combination);
-                combinationWithCard.add(card);
-                combinationsWithCard.add(combinationWithCard);
-            }
-            combinations.addAll(combinationsWithCard);
-        }
-        return combinations;
+        return Generator.subset(allCards()).simple().stream()
+                .filter(combination -> sumOfValues(combination) == 15)
+                .mapToInt(fifteen -> 2)
+                .sum();
     }
 
     private int sumOfValues(List<Card> cards) {
-        int sum = 0;
-        for (Card card : cards) {
-            sum += valueOf(card.rank());
-        }
-        return sum;
+        return cards.stream()
+                .mapToInt(card -> valueOf(card.rank()))
+                .sum();
     }
 
     private int valueOf(char rank) {
