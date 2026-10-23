@@ -22,20 +22,23 @@ Tests
   - "3♣7♣A♣K♣J♣" -> 5 points
   - "J♣7♥A♣K♦3♣" -> 1 points (one for his nob)
 - Pairs
-  - "5♥5♦A♠2♣6♣" -> 2
-  - "A♥A♦A♠2♣6♣" -> 6
-  - "6♥Q♦Q♠Q♣Q♥" -> 12
+  - ~~"5♥5♦A♠2♣6♣" -> 2~~
+  - ~~"A♥A♦A♠2♣6♣" -> 6~~
+  - ~~"6♥Q♦Q♠Q♣Q♥" -> 12~~
 - Fifteen Twos
-  - "5♥Q♦A♠7♣6♠" -> 2 points
-  - "A♥A♦2♠2♣3♣" -> 0 points (no combination sums to 15)
-  - "5♥0♦J♠2♣A♣" -> 4 points (5+10, 5+J)
-  - "K♥Q♦J♠0♣5♣" -> 8 points (each face card or ten with the 5)
-  - "A♥2♦3♠4♣5♣" -> 2 points (all five cards sum to 15)
-  - "5♥5♦5♠J♣5♣" -> 16 points (four 5+J and four 5+5+5)
+  - ~~"5♥Q♦A♠7♣6♠" -> 2 points~~
+  - ~~"A♥A♦2♠2♣3♣" -> 0 points (no combination sums to 15)~~
+  - ~~"5♥0♦J♠2♣A♣" -> 4 points (5+10, 5+J)~~
+  - ~~"K♥Q♦J♠0♣5♣" -> 8 points (each face card or ten with the 5)~~
+  - ~~"A♥2♦3♠4♣5♣" -> 2 points (all five cards sum to 15)~~
+  - ~~"5♥5♦5♠J♣5♣" -> 16 points (four 5+J and four 5+5+5)~~
 - Runs
-  - "2♦4♥3♠7♣J♦" -> 2 (run of three)
+  - "J♦Q♥K♠A♣2♣" -> 3 (run of three)
+  - "9♦0♥J♠A♣2♣" -> 3 (another run of three)
   - "0♦J♥Q♠A♣9♦" -> 4 (run of four)
 - Multiple rules apply
   - "3♣7♣A♣K♣K♦" -> 6 points
-  - "5♥Q♦Q♠7♣6♠" -> 6 points
+  - "5♥Q♦Q♠7♣6♠" -> 9 points
   - "5♥5♦5♠J♣5♣" -> 29
+  - ~~"7♥7♦8♠8♣A♥" -> 14 points (two pairs 4 + fifteen twos 10: four 7+8 and 7+7+A)~~
+  - ~~"5♥5♦0♠A♣2♣" -> 6 points (one pair 2 + fifteen twos 4: two 5+10)~~

@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Hand {
+    private static final int CARD_STRING_LENGTH = 2;
+    private static final int POINTS_FOR_PAIR = 2;
+    private static final int FIFTEEN = 15;
+    private static final int POINTS_FOR_FIFTEEN = 2;
     private final List<Card> handCards;
     private final Card starterCard;
 
@@ -21,22 +25,26 @@ public class Hand {
     }
 
     private static String parseStarterCard(String handAsString) {
-        return handAsString.substring(handAsString.length() - 2);
+        return handAsString.substring(handAsString.length() - CARD_STRING_LENGTH);
     }
 
     private static List<Card> parseHandCards(String handAsString) {
         List<Card> handCards = new ArrayList<>();
-        String handCardsAsString = handAsString.substring(0, handAsString.length() - 2);
-        for (int i = 0; i < handCardsAsString.length(); i += 2) {
-            handCards.add(Card.parse(handCardsAsString.substring(i, i + 2)));
+        String handCardsAsString = handAsString.substring(0, handAsString.length() - CARD_STRING_LENGTH);
+        for (int i = 0; i < handCardsAsString.length(); i += CARD_STRING_LENGTH) {
+            handCards.add(Card.parse(handCardsAsString.substring(i, i + CARD_STRING_LENGTH)));
         }
         return handCards;
+    }
+
+    public int score() {
+        return scorePairs() + scoreFifteenTwos();
     }
 
     public int scorePairs() {
         return Generator.combination(allCards()).simple(2).stream()
                 .filter(twoCards -> twoCards.getFirst().hasSameRankAs(twoCards.getLast()))
-                .mapToInt(pair -> 2)
+                .mapToInt(pair -> POINTS_FOR_PAIR)
                 .sum();
     }
 
@@ -48,23 +56,15 @@ public class Hand {
 
     public int scoreFifteenTwos() {
         return Generator.subset(allCards()).simple().stream()
-                .filter(combination -> sumOfValues(combination) == 15)
-                .mapToInt(fifteen -> 2)
+                .filter(combination -> sumOfValues(combination) == FIFTEEN)
+                .mapToInt(fifteen -> POINTS_FOR_FIFTEEN)
                 .sum();
     }
 
     private int sumOfValues(List<Card> cards) {
         return cards.stream()
-                .mapToInt(card -> valueOf(card.rank()))
+                .mapToInt(Card::value)
                 .sum();
-    }
-
-    private int valueOf(char rank) {
-        return switch (rank) {
-            case 'A' -> 1;
-            case '0', 'J', 'Q', 'K' -> 10;
-            default -> rank - '0';
-        };
     }
 
     public Card starterCard() {

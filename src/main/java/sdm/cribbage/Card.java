@@ -40,4 +40,12 @@ public class Card {
     public boolean hasSameRankAs(Card otherCard) {
         return this.rank == otherCard.rank;
     }
+
+    public int value() {
+        return switch (rank) {
+            case 'A' -> 1;
+            case '0', 'J', 'Q', 'K' -> 10;
+            default -> rank - '0';
+        };
+    }
 }
