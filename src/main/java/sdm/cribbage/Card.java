@@ -1,10 +1,10 @@
 package sdm.cribbage;
 
 public class Card {
-    private final char rank;
+    private final Rank rank;
     private final Suit suit;
 
-    public Card(char rank, Suit suit) {
+    public Card(Rank rank, Suit suit) {
         this.rank = rank;
         this.suit = suit;
     }
@@ -12,15 +12,23 @@ public class Card {
     public static Card parse(String cardAsString) {
         char rankAsChar = cardAsString.charAt(0);
         char suitAsChar = cardAsString.charAt(1);
-        return new Card(rankAsChar, Suit.of(suitAsChar));
+        return new Card(Rank.of(rankAsChar), Suit.of(suitAsChar));
     }
 
     public Suit suit() {
         return suit;
     }
 
-    public char rank() {
+    public Rank rank() {
         return rank;
+    }
+
+    public boolean hasSameRankAs(Card otherCard) {
+        return this.rank == otherCard.rank;
+    }
+
+    public int value() {
+        return rank.value();
     }
 
     @Override
@@ -32,20 +40,8 @@ public class Card {
 
     @Override
     public int hashCode() {
-        int result = rank;
+        int result = rank.hashCode();
         result = 31 * result + suit.hashCode();
         return result;
-    }
-
-    public boolean hasSameRankAs(Card otherCard) {
-        return this.rank == otherCard.rank;
-    }
-
-    public int value() {
-        return switch (rank) {
-            case 'A' -> 1;
-            case '0', 'J', 'Q', 'K' -> 10;
-            default -> rank - '0';
-        };
     }
 }

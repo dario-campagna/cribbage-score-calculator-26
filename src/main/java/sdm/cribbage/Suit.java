@@ -1,18 +1,22 @@
 package sdm.cribbage;
 
-import java.util.Map;
-
 public enum Suit {
-    DIAMONDS, HEARTS, CLUBS, SPADES;
+    DIAMONDS('♦'),
+    HEARTS('♥'),
+    CLUBS('♣'),
+    SPADES('♠');
 
-    private static final Map<Character, Suit> suitByChar = Map.of(
-            '♦', Suit.DIAMONDS,
-            '♥', Suit.HEARTS,
-            '♣', Suit.CLUBS,
-            '♠', Suit.SPADES
-    );
+    private final char symbol;
+
+    Suit(char symbol) {
+        this.symbol = symbol;
+    }
 
     public static Suit of(char suitAsChar) {
-        return suitByChar.get(suitAsChar);
+        for (Suit suit : values()) {
+            if (suit.symbol == suitAsChar)
+                return suit;
+        }
+        throw new IllegalArgumentException("Unknown suit: " + suitAsChar);
     }
 }
