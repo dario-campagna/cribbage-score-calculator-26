@@ -4,15 +4,15 @@ public class Card {
     private final char rank;
     private final Suit suit;
 
-    public Card(char rankAsChar, Suit suit) {
-        this.rank = rankAsChar;
+    public Card(char rank, Suit suit) {
+        this.rank = rank;
         this.suit = suit;
     }
 
     public static Card parse(String cardAsString) {
         char rankAsChar = cardAsString.charAt(0);
         char suitAsChar = cardAsString.charAt(1);
-        return new Card(rankAsChar, Suit.valueOf(suitAsChar));
+        return new Card(rankAsChar, Suit.of(suitAsChar));
     }
 
     public Suit suit() {
@@ -38,6 +38,6 @@ public class Card {
     }
 
     public boolean hasSameRankAs(Card otherCard) {
-        return this.rank == otherCard.rank();
+        return this.rank == otherCard.rank;
     }
 }

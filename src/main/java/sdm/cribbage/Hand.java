@@ -21,40 +21,29 @@ public class Hand {
     }
 
     private static String parseStarterCard(String handAsString) {
-        String starterCardAsString = handAsString.substring(handAsString.length() - 2);
-        return starterCardAsString;
+        return handAsString.substring(handAsString.length() - 2);
     }
 
     private static List<Card> parseHandCards(String handAsString) {
         List<Card> handCards = new ArrayList<>();
         String handCardsAsString = handAsString.substring(0, handAsString.length() - 2);
-        for (int i = 1; i < handCardsAsString.length(); i += 2) {
-            handCards.add(Card.parse(handCardsAsString.substring(i - 1, i + 1)));
+        for (int i = 0; i < handCardsAsString.length(); i += 2) {
+            handCards.add(Card.parse(handCardsAsString.substring(i, i + 2)));
         }
         return handCards;
     }
 
     public int scorePairs() {
-        int distinctPairs = countDistinctPairs(allCards());
-        return distinctPairs*2;
+        return Generator.combination(allCards()).simple(2).stream()
+                .filter(twoCards -> twoCards.getFirst().hasSameRankAs(twoCards.getLast()))
+                .mapToInt(pair -> 2)
+                .sum();
     }
 
     private List<Card> allCards() {
         List<Card> allCards = new ArrayList<>(handCards);
         allCards.add(starterCard);
         return allCards;
-    }
-
-    private int countDistinctPairs(List<Card> cards) {
-        int numberOfDistinctPairs = 0;
-        for (int i = 0; i < cards.size(); i++)
-        {
-            for (int j = i + 1; j < cards.size(); j++) {
-                if (cards.get(i).hasSameRankAs(cards.get(j)))
-                    numberOfDistinctPairs++;
-            }
-        }
-        return numberOfDistinctPairs;
     }
 
     public int scoreFifteenTwos() {

@@ -44,8 +44,8 @@ public class ParseHand {
                 new Card('3', Suit.SPADES),
                 new Card('4', Suit.CLUBS)
         );
-        Hand expetedHand = new Hand(expectedHandCards, new Card('5', Suit.SPADES));
+        Hand expectedHand = new Hand(expectedHandCards, new Card('5', Suit.SPADES));
         Hand parsedHand = Hand.parse("A♥2♦3♠4♣5♠");
-        assertEquals(expetedHand, parsedHand);
+        assertEquals(expectedHand, parsedHand);
     }
 }
