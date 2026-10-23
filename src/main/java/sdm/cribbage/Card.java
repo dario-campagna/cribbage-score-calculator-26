@@ -36,4 +36,8 @@ public class Card {
         result = 31 * result + suit.hashCode();
         return result;
     }
+
+    public boolean hasSameRankAs(Card otherCard) {
+        return this.rank == otherCard.rank();
+    }
 }
